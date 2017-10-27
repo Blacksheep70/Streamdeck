@@ -4,7 +4,7 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/tekks/Streamdeck.svg?style=flat-square)](https://github.com/Tekks/Streamdeck/commits/master)
 [![license](https://img.shields.io/github/license/tekks/Streamdeck.svg?style=flat-square)](https://github.com/Tekks/Streamdeck/blob/master/LICENSE)
 
-# Stream Deck 4 Arduino
+# Stream Deck 4 Arduino | Dev
 inspired by Elgato
 
 ### Used Libarys
