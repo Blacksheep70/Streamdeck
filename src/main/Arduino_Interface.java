@@ -77,7 +77,7 @@ public class Arduino_Interface {
 		if (window != null)
 			return;
 		window = new JFrame();
-		window.setIconImage(createImage("/img/arduino.png", "tray icon"));
+		window.setIconImage(createImage("/img/logo_64x.png", "tray icon"));
 		window.setTitle("Arduino Interface | ComPort");
 		window.setSize(450, 100);
 		window.setLayout(new BorderLayout());
@@ -184,7 +184,7 @@ public class Arduino_Interface {
 			return;
 		}
 		final PopupMenu popup = new PopupMenu();
-		trayIcon = new TrayIcon(createImage("/img/arduino.png", "tray icon"));
+		trayIcon = new TrayIcon(createImage("/img/logo_16x.png", "tray icon"));
 		final SystemTray tray = SystemTray.getSystemTray();
 
 		MenuItem aboutItem = new MenuItem("About");
