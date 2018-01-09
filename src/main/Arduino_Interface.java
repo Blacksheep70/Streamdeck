@@ -45,7 +45,7 @@ public class Arduino_Interface {
 	static TrayIcon trayIcon;
 	static JFrame window;
 	private static final int PORT = 1258;
-
+	static Gui gwindow = new Gui();
 	public static void main(String[] args) {
 		checkIfRunning();
 		try {
@@ -209,7 +209,8 @@ public class Arduino_Interface {
 
 		trayIcon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				select_comport();
+				//select_comport();
+				gwindow.open();
 			}
 		});
 
@@ -235,7 +236,8 @@ public class Arduino_Interface {
 
 		selectItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				select_comport();
+				//select_comport();
+					gwindow.open();
 			}
 		});
 
