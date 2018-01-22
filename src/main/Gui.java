@@ -1,4 +1,4 @@
-package main;
+                                     package main;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
