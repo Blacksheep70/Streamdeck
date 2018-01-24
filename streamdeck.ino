@@ -130,7 +130,7 @@ void initial() {
 // 10 + 60 -> 250
 //60 + 60 -> 180
 }
-// Empty Container
+// Empty Container...
 void draw_re(int x, int y) {
   //Lenght: 32 + 20 = 52
   int dist = 10;
