@@ -24,21 +24,19 @@ uint8_t running;
 #define WHITE   0xFFFF
 #define ORANGE  0xFD00
 
-#define KEY_F13   0xF0 
-#define KEY_F14   0xF1 
-#define KEY_F15   0xF2 
-#define KEY_F16   0xF3 
-#define KEY_F17   0xF4 
-#define KEY_F18   0xF5 
-#define KEY_F19   0xF6 
-#define KEY_F20   0xF7 
-#define KEY_F21   0xF8 
-#define KEY_F22   0xF9 
+#define KEY_F13   0xF0
+#define KEY_F14   0xF1
+#define KEY_F15   0xF2
+#define KEY_F16   0xF3
+#define KEY_F17   0xF4
+#define KEY_F18   0xF5
+#define KEY_F19   0xF6
+#define KEY_F20   0xF7
+#define KEY_F21   0xF8
+#define KEY_F22   0xF9
 #define KEY_F23   0xFA
 #define KEY_F24   0xFB
 
-boolean t1, t2, t3, t4, t5  , t6, t7, t8, t9, t10   , t11, t12;
-boolean t1h;
 XPT2046_Touchscreen tss(TFT_PIN, TIRQ_PIN);
 HX8347_kbv tft;
 
@@ -51,12 +49,11 @@ void setup(void) {
   if (g_identifier == 0x00D3) g_identifier = 0x9486;
   if (g_identifier == 0xFFFF) g_identifier = 0x9341;
   initial();
-  Keyboard.begin();
   tss.begin();
 }
 
 void loop() {
-  write_Jinput();
+  write_input_fields();
   if (tss.touched()) {
     TS_Point p = tss.getPoint();
     p.x = map(p.x, 320, 3850, 0, 480);
@@ -65,143 +62,81 @@ void loop() {
     //################## Code for actions here ##################
     //################## LINE 1 ##################
     if (p.x > 20 && p.x < 90 && p.y > 80 && p.y < 150) {
-      if (t1) {
-        draw_re(10, 60, GREEN, "DISC", "Mic", "ON");
-        draw_re(10, 120, GREEN, "DISC", "Speaker", "ON");
-        t6 = false;
-        t1 = false;
-        t1h = false;
-      } else {
-        if (t6) {
-          t1h = false;
-        } else {
-          t1h = true;
-        }
-        draw_re(10, 60, RED, "DISC", "Mic", "OFF");
-        t1 = true;
-      }
-      Keyboard.write(KEY_F13);
+        Serial.print(1);
     }
     if (p.x > 115 && p.x < 180 && p.y > 80 && p.y < 150) {
-      if (t2) {
-        draw_re(70, 60, GREEN, "TS", "Mic", "ON");;
-        t2 = false;
-      } else {
-        draw_re(70, 60, RED, "TS", "Mic", "OFF");
-        t2 = true;
-      }
-      Keyboard.write(KEY_F15);
+        Serial.print(2);
     }
     if (p.x > 200 && p.x < 275 && p.y > 80 && p.y < 150) {
-      Keyboard.write(KEY_F17);
+        Serial.print(3);
     }
     if (p.x > 290 && p.x < 365 && p.y > 80 && p.y < 150) {
-      Keyboard.write(KEY_F18);
+        Serial.print(4);
     }
     if (p.x > 385 && p.x < 455 && p.y > 80 && p.y < 150) {
-      Keyboard.write(KEY_F19);
+        Serial.print(5);
     }
 
 
     //################## LINE 2 ##################
     if (p.x > 20 && p.x < 90 && p.y > 165 && p.y < 235) {
-      if (t6) {
-        if (t1h == false) {
-          draw_re(10, 60, GREEN, "DISC", "Mic", "ON");
-          t1 = false;
-        }
-        draw_re(10, 120, GREEN, "DISC", "Speaker", "ON");
-        t6 = false;
-      } else {
-        draw_re(10, 120, RED, "DISC", "Speaker", "OFF");
-        draw_re(10, 60, RED, "DISC", "Mic", "OFF");
-        t6 = true;
-        t1 = true;
-      }
-      Keyboard.write(KEY_F14);
+        Serial.print(6);
     }
     if (p.x > 115 && p.x < 180 && p.y > 165 && p.y < 235) {
-      if (t7) {
-        draw_re(70, 120, GREEN, "TS", "Speaker", "ON");
-        t7 = false;
-      } else {
-        draw_re(70, 120, RED, "TS", "Speaker", "OFF");
-        t7 = true;
-      }
-      Keyboard.write(KEY_F16);
+        Serial.print(7);
     }
     if (p.x > 200 && p.x < 275 && p.y > 165 && p.y < 235) {
+        Serial.print(8);
     }
     if (p.x > 290 && p.x < 365 && p.y > 165 && p.y < 235) {
+        Serial.print(9);
     }
     if (p.x > 385 && p.x < 455 && p.y > 165 && p.y < 235) {
+        Serial.print(10);
     }
 
     //################## LINE 3 ##################
     if (p.x > 20 && p.x < 90 && p.y > 245 && p.y < 315) {
-      if (t11) {
-        draw_re(10, 180, CYAN, "OBS", "Mic", "ON");
-        t11 = false;
-      } else {
-        draw_re(10, 180, RED, "OBS", "Mic", "OFF");
-        t11 = true;
-      }
-      Keyboard.write(KEY_F23);
+        Serial.print(11);
     }
     if (p.x > 115 && p.x < 180 && p.y > 245 && p.y < 315) {
-      if (t12) {
-        draw_re(70, 180, CYAN, "OBS", "Speaker", "ON");
-        t12 = false;
-      } else {
-        draw_re(70, 180, RED, "OBS", "Speaker", "OFF");
-        t12 = true;
-      }
-      Keyboard.write(KEY_F24);
+        Serial.print(12);
     }
     if (p.x > 200 && p.x < 275 && p.y > 245 && p.y < 315) {
-      Keyboard.write(KEY_F20);
+        Serial.print(13);
     }
     if (p.x > 290 && p.x < 365 && p.y > 245 && p.y < 315) {
-      Keyboard.write(KEY_F21);
+        Serial.print(14);
     }
     if (p.x > 385 && p.x < 455 && p.y > 245 && p.y < 315) {
-      Keyboard.write(KEY_F22);
+        Serial.print(15);
     }
-    delay(500);
+    delay(300);
   }
 }
 
 void initial() {
   //################## Initial ##################
-  tft.setRotation(3); 
+  tft.setRotation(3);
+  tft.fillScreen(BLACK);
   tft.setTextColor(WHITE);
+  for (int dint_y = 60; dint_y >= 120; dint_y =+ 60) {
+      for (int dint_x = 10; dint_x >= 250; dint_x =+ 60) {
+          draw_re(10, 60);
+      }
 
-  draw_re(10, 60, GREEN, "DISC", "Mic", "ON");
-  draw_re(70, 60, GREEN, "TS", "Mic", "ON");
-  draw_re(130, 60, ORANGE, "OBS", "Scene", "Idle");
-  draw_re(190, 60, ORANGE, "OBS", "Timer", "ON/OFF");
-  draw_re(250, 60, ORANGE, "OBS", "Scene", "Active");
-
-  draw_re(10, 120, GREEN, "DISC", "Speaker", "ON");
-  draw_re(70, 120, GREEN, "TS", "Speaker", "ON");
-  draw_re(130, 120);
-  draw_re(190, 120);
-  draw_re(250, 120);
-
-  draw_re(10, 180, CYAN, "OBS", "Mic", "ON");
-  draw_re(70, 180, CYAN, "OBS", "Speaker", "ON");
-  draw_re(130, 180, ORANGE, "OBS", "Scene", "OW");
-  draw_re(190, 180, ORANGE, "OBS", "Scene", "PUBG");
-  draw_re(250, 180, ORANGE, "OBS", "Scene", "SoW");
-
+  }
+  draw_re(10, 60);
+// 10 + 60 -> 250
+//60 + 60 -> 180
 }
-
+// Empty Container
 void draw_re(int x, int y) {
   //Lenght: 32 + 20 = 52
   int dist = 10;
   tft.drawRect(x, y, 32 + 2 * dist, 32 + 2 * dist, WHITE);
 }
-
+// Full Container
 void draw_re(int x, int y, uint16_t color, String txt1, String txt2, String txt3) {
   //Lenght: 32 + 20 = 52
   int dist = 10;
@@ -218,7 +153,7 @@ void draw_re(int x, int y, uint16_t color, String txt1, String txt2, String txt3
   tft.println(txt3);
 }
 
-void write_Jinput() {
+void write_input_fields() {
   String JString = Serial.readString();
   tft.setTextSize(1);
   tft.setTextColor(WHITE);
@@ -229,7 +164,7 @@ void write_Jinput() {
   for (int i = 1; i < count_items.toInt() * 2; i = i + 2) {
     String string_desc = getValue(JString, ';', i);
     String string_item = getValue(JString, ';', i + 1);
-    tft.fillRect(x_desc + 50, y_desc, 100, 7, BLACK); //x,y,l,h
+    tft.fillRect(x_desc + 50, y_desc, 100, 7, BLACK); //x,y,l,h,color
     tft.setCursor(x_desc, y_desc);
     tft.println(string_desc);
     tft.setCursor(50 + x_desc, y_desc);
