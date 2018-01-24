@@ -173,10 +173,7 @@ void loop() {
 
 void initial() {
   //################## Initial ##################
-  tft.setRotation(3);
-  tft.fillScreen(RED);
-  tft.fillScreen(WHITE);
-  tft.fillScreen(BLACK);
+  tft.setRotation(3); 
   tft.setTextColor(WHITE);
 
   draw_re(10, 60, GREEN, "DISC", "Mic", "ON");
