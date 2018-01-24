@@ -17,6 +17,7 @@ package main;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -45,7 +46,6 @@ public class Arduino_Interface {
 	static TrayIcon trayIcon;
 	static JFrame window;
 	private static final int PORT = 1258;
-	static Gui gwindow = new Gui();
 	public static void main(String[] args) {
 		checkIfRunning();
 		try {
@@ -210,7 +210,9 @@ public class Arduino_Interface {
 		trayIcon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//select_comport();
+				Gui gwindow = new Gui();
 				gwindow.open();
+				
 			}
 		});
 
@@ -237,7 +239,9 @@ public class Arduino_Interface {
 		selectItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//select_comport();
-					gwindow.open();
+				Gui gwindow = new Gui();
+				gwindow.open();
+				select_comport();
 			}
 		});
 
@@ -259,4 +263,16 @@ public class Arduino_Interface {
 			return (new ImageIcon(imageURL, description)).getImage();
 		}
 	}
+	protected Image loadImage(String path) {
+		String pngpath = getClass().getResource(path).getFile();
+		File file = new File(pngpath);
+
+		if (file.getAbsolutePath() == null) {
+			System.err.println("Resource not found: " + path);
+			return null;
+		} else {
+			return null;
+		}
+	}
+	
 }
